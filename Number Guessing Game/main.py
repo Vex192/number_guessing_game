@@ -5,6 +5,7 @@ counter_win = 0
 counter_loss = 0
 total_games = 0
 all_guesses = []
+all_game_attempts = []
 
 try:
     while True:
@@ -33,102 +34,123 @@ try:
 
         won = False
 
-        total_games += 1
-
         while True:
 
-            if difficulty == "e":
+            try:
 
-                user_guess_easy = int(input("Level Difficulty: Easy || Please enter a integer from 1-5: "))
-                all_guesses.append(user_guess_easy)
+                if difficulty == "e":
 
-                if user_guess_easy == random_number_easy:
+                    user_guess_easy = int(input("Level Difficulty: Easy || Please enter a integer from 1-5: "))
+                    all_guesses.append(user_guess_easy)
                     number_of_guess_easy += 1
-                    print("Congrats you guessed the number. You Won easy level!!\n\n")
-                    counter_win += 1
-                    won = True
-                    break
 
-                elif user_guess_easy > random_number_easy:
-                    counter_loss += 1
-                    lives_easy -= 1
-                    print("Your number is greater than the correct number.\n\n")
-                    print(f"You lost a life. You now have {lives_easy} lives remaining.\n\n")
+                    if user_guess_easy == random_number_easy:
+                        print("Congrats you guessed the number. You Won easy level!!\n\n")
+                        counter_win += 1
+                        won = True
+                        break
 
-                else:
-                    counter_loss += 1
-                    lives_easy -= 1
-                    print("Your number is less than the correct number.\n\n")
-                    print(f"You lost a life. You now have {lives_easy} lives remaining.\n\n")
+                    elif user_guess_easy < start_easy or user_guess_easy > end_easy:
+                        print(f"Please enter a number between {start_easy} and {end_easy}. Press run to try again.\n\n")
+                        break
 
-                if lives_easy == 0:
-                    print(f"You lost. The correct answer was {random_number_easy}.\n\n")
-                    won = False
-                    break
+                    elif user_guess_easy > random_number_easy:
+                        counter_loss += 1
+                        lives_easy -= 1
+                        print("Your number is greater than the correct number.\n\n")
+                        print(f"You lost a life. You now have {lives_easy} lives remaining.\n\n")
+
+                    else:
+                        counter_loss += 1
+                        lives_easy -= 1
+                        print("Your number is less than the correct number.\n\n")
+                        print(f"You lost a life. You now have {lives_easy} lives remaining.\n\n")
+
+                    if lives_easy == 0:
+                        print(f"You lost. The correct answer was {random_number_easy}.\n\n")
+                        won = False
+                        break
 
 
-            elif difficulty == "m":
+                elif difficulty == "m":
 
-                user_guess_medium = int(input("Level Difficulty: Medium || Please enter a integer from 1-10: "))
-                all_guesses.append(user_guess_medium)
-
-                if user_guess_medium == random_number_medium:
+                    user_guess_medium = int(input("Level Difficulty: Medium || Please enter a integer from 1-10: "))
+                    all_guesses.append(user_guess_medium)
                     number_of_guess_medium += 1
-                    print("Congrats you guessed the number. You Won medium level!!\n\n")
-                    counter_win += 1
-                    won = True
-                    break
 
-                elif user_guess_medium > random_number_medium:
-                    counter_loss += 1
-                    lives_medium -= 1
-                    print("Your number is greater than the correct number.\n\n")
-                    print(f"You lost a life. You now have {lives_medium} lives remaining.\n\n")
+                    if user_guess_medium == random_number_medium:
+                        print("Congrats you guessed the number. You Won medium level!!\n\n")
+                        counter_win += 1
+                        won = True
+                        break
 
-                else:
-                    counter_loss += 1
-                    lives_medium -= 1
-                    print("Your number is less than the correct number.\n\n")
-                    print(f"You lost a life. You now have {lives_medium} lives remaining.\n\n")
+                    elif user_guess_medium < start_medium or user_guess_medium > end_medium:
+                        print(f"Please enter a number between {start_medium} and {end_medium}. Press run to try again.\n\n")
+                        break
 
-                if lives_medium == 0:
-                    print(f"You lost. The correct answer was {random_number_medium}.\n\n")
-                    won = False
-                    break
+                    elif user_guess_medium > random_number_medium:
+                        counter_loss += 1
+                        lives_medium -= 1
+                        print("Your number is greater than the correct number.\n\n")
+                        print(f"You lost a life. You now have {lives_medium} lives remaining.\n\n")
+
+                    else:
+                        counter_loss += 1
+                        lives_medium -= 1
+                        print("Your number is less than the correct number.\n\n")
+                        print(f"You lost a life. You now have {lives_medium} lives remaining.\n\n")
+
+                    if lives_medium == 0:
+                        print(f"You lost. The correct answer was {random_number_medium}.\n\n")
+                        won = False
+                        break
 
 
-            elif difficulty == "h":
+                elif difficulty == "h":
 
-                user_guess_hard = int(input("Level Difficulty: Hard || Please enter a integer from 1-20: "))
-                all_guesses.append(user_guess_hard)
-
-                if user_guess_hard == random_number_hard:
+                    user_guess_hard = int(input("Level Difficulty: Hard || Please enter a integer from 1-20: "))
+                    all_guesses.append(user_guess_hard)
                     number_of_guess_hard += 1
-                    print("Congrats you guessed the number. You Won hard level!!\n\n")
-                    counter_win += 1
-                    won = True
-                    break
 
-                elif user_guess_hard > random_number_hard:
-                    counter_loss += 1
-                    lives_hard -= 1
-                    print("Your number is greater than the correct number.\n\n")
-                    print(f"You lost a life. You now have {lives_hard} lives remaining.\n\n")
+                    if user_guess_hard == random_number_hard:
+                        print("Congrats you guessed the number. You Won hard level!!\n\n")
+                        counter_win += 1
+                        won = True
+                        break
+
+                    elif user_guess_hard < start_hard or user_guess_hard > end_hard:
+                        print(f"Please enter a number between {start_hard} and {end_hard}. Press run to try again.\n\n")
+                        break
+
+                    elif user_guess_hard > random_number_hard:
+                        counter_loss += 1
+                        lives_hard -= 1
+                        print("Your number is greater than the correct number.\n\n")
+                        print(f"You lost a life. You now have {lives_hard} lives remaining.\n\n")
+
+                    else:
+                        counter_loss += 1
+                        lives_hard -= 1
+                        print("Your number is less than the correct number.\n\n")
+                        print(f"You lost a life. You now have {lives_hard} lives remaining.\n\n")
+
+                    if lives_hard == 0:
+                        print(f"You lost. The correct answer was {random_number_hard}.\n\n")
+                        won = False
+                        break
 
                 else:
-                    counter_loss += 1
-                    lives_hard -= 1
-                    print("Your number is less than the correct number.\n\n")
-                    print(f"You lost a life. You now have {lives_hard} lives remaining.\n\n")
-
-                if lives_hard == 0:
-                    print(f"You lost. The correct answer was {random_number_hard}.\n\n")
-                    won = False
+                    print("Please enter e for easy m for medium and h for hard, not something else. Press run to try again.")
                     break
 
-            else:
-                print("Please enter e for easy m for medium and h for hard, not something else. Press run to try again.")
+            except ValueError:
+                print("That's not a whole number. Press run to try again.\n\n")
                 break
+
+        attempts_this_game = number_of_guess_easy + number_of_guess_medium + number_of_guess_hard
+        if attempts_this_game > 0:
+            all_game_attempts.append(attempts_this_game)
+            total_games += 1
 
         if True:
             continue_or_quit = input("Would you like to continue or quit? Enter c to continue or q to quit: ").strip().lower()
@@ -155,6 +177,12 @@ try:
     if len(all_guesses) > 0:
         most_guessed_number = stats.mode(all_guesses)
         print(f"Most Guessed Number: {int(most_guessed_number.mode)}")
+
+    if len(all_game_attempts) > 0:
+        best_game = min(all_game_attempts)
+        worst_game = max(all_game_attempts)
+        print(f"Best Game (Fewest Attempts): {best_game}")
+        print(f"Worst Game (Most Attempts): {worst_game}")
 
 except ValueError:
     print("ERROR!! Wrong Input!! Please enter an integer.")
